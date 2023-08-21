@@ -17,8 +17,6 @@ export default function RootLayout({ children }) {
         <div className='container'>
 
         <Navbar></Navbar>
-
-      <h2>Main layout</h2>
         
         {children}
 

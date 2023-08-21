@@ -1,11 +1,27 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import Footer from './components/Footer/footer'
-import Navbar from './components/Navbar/navbar'
+import Hero from 'public/hero.png'
+
+
 
 
 export default function Home() {
+  //class Image built-in in next-js
   return (
-    <div> Home  </div>
+    <div className={styles.container}>
+      <div className={styles.item}>
+      <h1 className={styles.title}>
+        Better design for your digital products
+      </h1>
+      <p className={styles.desc}>
+          Turning your idea into Reality. we bring together the teams from th global tech industry.
+      </p>  
+      <button className={styles.button}>see our works</button>
+      </div>
+      <div className={styles.item}>
+      <Image src={Hero} height={500} width={500} alt="" />
+      </div>
+    </div>
+    
   )
 }

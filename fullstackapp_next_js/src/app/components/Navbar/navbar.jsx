@@ -44,7 +44,7 @@ const navbar = () => {
         <Link key={link.id} href={link.url} className={style.link}>{link.title}</Link>
 
         ))}
-        <button className={style.logout} onClick={()=>{
+         <button className={style.logout} onClick={()=>{
         }}>Log out</button>
 
         </div>
