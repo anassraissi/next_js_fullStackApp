@@ -1,9 +1,10 @@
 import React from 'react'
+import style from './style.module.css'
 
-const about = () => {
+const blog = () => {
   return (
-    <div>page</div>
+    <div className={style.container}>page</div>
   )
 }
 
-export default about
+export default blog

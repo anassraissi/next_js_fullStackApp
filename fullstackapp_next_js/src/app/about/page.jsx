@@ -1,8 +1,9 @@
 import React from 'react'
+import style from './style.module.css'
 
 const about = () => {
   return (
-    <div>page</div>
+    <div className={style.container}>page</div>
   )
 }
 
