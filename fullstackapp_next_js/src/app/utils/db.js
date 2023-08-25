@@ -1,13 +1,16 @@
-const { Mongoose, default: mongoose } = require("mongoose");
-const connect=async()=>{
+import mongoose from 'mongoose';
 
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://127.0.0.1:27017', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+  }
+};
 
-    try{
-        await mongoose.connect(process.env.Mongo);
-    }
-    catch(err){
-        throw new err('Connection failed !');
-    }
-}
-export default connect;
+export default connectDB;
 

@@ -38,6 +38,8 @@ https://github.com/safak/nextjs-tutorial
 
 # example of useEffect in react js => save a data aside in components.
 
+  ```
+
   const [data,setData]=useState([]);
   const [err,setErr]=useState(false);
   const [isLoading,setIsLoading]=useState(false);
@@ -58,3 +60,27 @@ https://github.com/safak/nextjs-tutorial
       getData();
   },[]);
   console.log(data)
+```
+
+
+## create a response htpp in nextjs
+```
+
+const { NextResponse } = require("next/server");
+
+export const GET=async(request)=>{
+
+    return new NextResponse("it's works",{status:200});
+}
+
+```
+ `must be the file named route.js`
+
+# connect with mongodb compass offline
+```
+// instead of this
+const url = "mongodb://localhost:27017";
+
+// Just Replace
+const url = "mongodb://127.0.0.1:27017";
+```
