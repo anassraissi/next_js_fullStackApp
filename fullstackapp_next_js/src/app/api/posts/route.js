@@ -6,8 +6,8 @@ import connect from "@/app/utils/db";
 export const GET=async(request)=>{
     try{
                 await connect();
-            const post=await Post.find();
-            return new NextResponse(post,{status:200});
+            const posts=await Post.find();
+            return new NextResponse(JSON.stringify(posts),{status:200});
 
     }
     catch(err){
