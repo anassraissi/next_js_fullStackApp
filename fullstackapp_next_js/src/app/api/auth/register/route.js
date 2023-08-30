@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 export const POST=async(request)=>{
 const {name,email,password}=await request.json();
 await connect();
+//hash password by bcrypt function
 const hashedpassword=await bcrypt.hash(password,5);
 const newUser=new USer({
     name,email,
