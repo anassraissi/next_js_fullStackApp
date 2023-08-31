@@ -1,9 +1,20 @@
 "use client"
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import styles from './style.module.css'
 import React from 'react'
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const session=useSession();
+  const router=useRouter();
+  if(session.status==='authenticated'){
+    //this ?.push handle id object router is null or undefinded will w'ont throw the error  ==> feature new in js
+    router?.push('/dashboard')
+  }
+  if(session.status==='loading'){
+    return <p>...Loading</p>
+  }
+
 
 const handleSubmit=async(e)=>{
 
