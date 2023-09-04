@@ -84,3 +84,54 @@ const url = "mongodb://localhost:27017";
 // Just Replace
 const url = "mongodb://127.0.0.1:27017";
 ```
+
+# Client-side data fetching with SWR
+```
+React hook library for data fetching called SWR. It is highly recommended if you are fetching data on the client-side. It handles caching, revalidation, focus tracking, refetching on intervals, and more.
+```
+## Swr use
+```
+
+import useSWR from 'swr'
+ 
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+ 
+function Profile() {
+  const { data, error } = useSWR('/api/profile-data', fetcher)
+ 
+  if (error) return <div>Failed to load</div>
+  if (!data) return <div>Loading...</div>
+ 
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.bio}</p>
+    </div>
+  )
+}
+```
+
+```
+useSWR: This is a hook provided by the SWR library (Stale-While-Revalidate). It is used for data fetching and caching in React applications. SWR makes it easy to fetch data from various sources, including APIs, and automatically handles caching and revalidation.
+```
+# why on use '?' in query fech api.
+```
+The ? is used to start the query string, and it's followed by a dynamically generated parameter based on the user's name obtained from session?.data?.user.name. This allows you to send a specific user's name as a parameter when making the HTTP request to the /api/posts endpoint.
+```
+# why && in javascript
+```
+In JavaScript, the && operator is a logical operator that returns the value of its second operand if the first operand is truthy, and it returns the first operand if it is falsy.
+exp
+
+const posts = await Post.find(username && { username });
+
+So, essentially, the && operator is used here to conditionally include the { username } object in the query based on whether username has a value. If username has a value, it filters the posts by that username; otherwise, it returns all posts (since the right-hand side of && is not evaluated when username is falsy).
+if a username has a value.
+  
+const posts = await Post.find({username}); 
+```
+
+
+
+
+

@@ -1,16 +1,20 @@
+"use client"
 import React from 'react'
 import styles from './style.module.css'
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useRouter } from "next/navigation";
+
+
+
 async function getData(){
   const res=await fetch('http://localhost:3000/api/posts',{
 
     cache: "no-store", // data changable each request no make data cach in browser..
     // { cache: 'force-cache' }  // make data cach in web browser imediatly cause is not changable it's static
     // fetch('https://...', { next: { revalidate: 3600 } }) Revalidating Data make cach store each second semi dynamic
-
-
 
   })
   if(!res.ok){
@@ -20,6 +24,19 @@ async function getData(){
 }
 
 const blog = async() => {
+  const router=useRouter();
+  const session=useSession();
+  
+  if(session.status==='authenticated'){
+    router?.push('/blog')
+  }
+  if(session.status==='loading'){
+     <p>Loading...</p>  
+  }
+  if(session.status==='unauthenticated'){
+    router?.push('/dashboard/login')
+  }
+
   const data=await getData();
   return (
     <div className={styles.mainContainer}>
